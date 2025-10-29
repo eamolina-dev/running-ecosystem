@@ -7,7 +7,7 @@ from sqlalchemy import pool
 from alembic import context
 
 from logging.config import fileConfig
-from app.core.database import Base
+from app.db.base import Base
 
 from dotenv import load_dotenv
 
