@@ -1,101 +1,149 @@
-# app/seeds/seed_runner.py
+import json
 from app.db.session import SessionLocal
-from app.models import User, Runner, Organization, Event, Race, Registration
-from datetime import datetime, date
-import random
+from app.models import User, Runner, Organization, Event, Race, Registration, Result
+from app.core.security import get_password_hash
 
 db = SessionLocal()
 
-def run_seed():
-    # Crear superadmin
-    superadmin = User(
-        email="admin@runhub.com",
-        username="superadmin",
-        hashed_password="hashed_admin_pwd",
-        role="superadmin",
-    )
-    db.add(superadmin)
+# Paths
+USERS_JSON = "app/json/users.json"
+RUNNERS_JSON = "app/json/runners.json"
+ORGS_JSON = "app/json/organizations.json"
+EVENTS_JSON = "app/json/events.json"
+RACES_JSON = "app/json/races.json"
+REGISTRATIONS_JSON = "app/json/registrations.json"
+RESULTS_JSON = "app/json/results.json"
 
-    # Crear organizaciones
-    orgs = []
-    for i in range(1, 4):
-        org_admin = User(
-            email=f"org{i}@mail.com",
-            username=f"org_admin_{i}",
-            hashed_password="hashed_pwd",
-            role="org_admin",
-        )
-        org = Organization(
-            name=f"Trail Org {i}",
-            description=f"Organización {i} especializada en carreras de montaña",
-            logo_url=f"https://example.com/logo_{i}.png",
-            admin=org_admin
-        )
-        orgs.append(org)
-        db.add(org)
 
-    # Crear runners
-    runners = []
-    for i in range(1, 11):
+def seed_database():
+    # Load JSONs
+    users = json.load(open(USERS_JSON))
+    runners = json.load(open(RUNNERS_JSON))
+    orgs = json.load(open(ORGS_JSON))
+    events = json.load(open(EVENTS_JSON))
+    races = json.load(open(RACES_JSON))
+    registrations = json.load(open(REGISTRATIONS_JSON))
+    results = json.load(open(RESULTS_JSON))
+
+    # Maps for ID remapping
+    user_map = {}
+    event_map = {}
+    race_map = {}
+
+    # ---- USERS ----
+    for i, u in enumerate(users, start=1):
+        role = "organization" if u["role"] == "org_admin" else u["role"]
         user = User(
-            email=f"runner{i}@mail.com",
-            username=f"runner_{i}",
-            hashed_password="hashed_pwd",
-            role="runner",
+            email=u["email"],
+            username=u["username"],
+            role=role,
+            hashed_password=get_password_hash(u["password"]),
+            is_active=u["is_active"],
+            is_verified=u["is_verified"]
         )
-        runner = Runner(
-            full_name=f"Runner {i}",
-            birth_date=date(1990 + i % 10, random.randint(1, 12), random.randint(1, 28)),
-            city="Ciudad X",
-            avatar_url=f"https://example.com/avatar_{i}.jpg",
-            user=user,
-        )
-        db.add(runner)
-        runners.append(runner)
-
+        db.add(user)
+        db.flush()
+        user_map[i] = user.id
     db.commit()
 
-    # Crear eventos y carreras
-    for org in orgs:
-        for j in range(1, 3):
-            event = Event(
-                name=f"{org.name} Event {j}",
-                year=2025,
-                start_date=date(2025, 3, j * 2),
-                end_date=date(2025, 3, j * 2 + 1),
-                description=f"Evento {j} de {org.name}",
-                location="Cordoba, Argentina",
-                organization=org
-            )
-            db.add(event)
-            db.commit()
-
-            for k in [10, 21, 42]:
-                race = Race(
-                    name=f"{k}K Race",
-                    distance_km=float(k),
-                    price=5000 + k * 10,
-                    start_datetime=datetime(2025, 3, j * 2, 8, 0),
-                    max_participants=300,
-                    event_id=event.id
-                )
-                db.add(race)
-                db.commit()
-
-                # Inscriptos aleatorios
-                selected_runners = random.sample(runners, k=random.randint(3, 6))
-                for r in selected_runners:
-                    registration = Registration(
-                        runner_id=r.id,
-                        race_id=race.id,
-                        payment_status="paid",
-                        registered_at=datetime.utcnow()
-                    )
-                    db.add(registration)
-
+    # ---- RUNNERS ----
+    for r in runners:
+        db.add(Runner(
+            full_name=r["full_name"],
+            birth_date=r["birth_date"],
+            gender=r["gender"],
+            city=r["city"],
+            country=r["country"],
+            avatar_url=r["avatar_url"],
+            bio=r["bio"],
+            instagram=r["instagram"],
+            team_name=r["team_name"],
+            user_id=user_map[r["user_id"]],
+        ))
     db.commit()
-    db.close()
-    print("✅ Seed completo cargado correctamente.")
+
+    # ---- ORGS ----
+    for o in orgs:
+        db.add(Organization(
+            name=o["name"],
+            description=o["description"],
+            website=o["website"],
+            logo_url=o["logo_url"],
+            location=o["location"],
+            founded_year=o["founded_year"],
+            social_links=o["social_links"],
+            user_id=user_map[o["user_id"]],
+        ))
+    db.commit()
+
+    # ---- EVENTS ----
+    for e in events:
+        event = Event(
+            name=e["name"],
+            description=e["description"],
+            location=e["location"],
+            banner_url=e["banner_url"],
+            latitude=e["latitude"],
+            longitude=e["longitude"],
+            start_date=e["start_date"],
+            end_date=e["end_date"],
+            year=e["year"],
+            status=e["status"],
+            organization_id=e["organization_id"],
+        )
+        db.add(event)
+        db.flush()
+        event_map[e["id"]] = event.id
+    db.commit()
+
+    # ---- RACES ----
+    for r in races:
+        race = Race(
+            event_id=event_map[r["event_id"]],
+            name=r["name"],
+            distance_km=r["distance_km"],
+            elevation_gain=r["elevation_gain"],
+            terrain_type=r["terrain_type"],
+            price=r["price"],
+            start_datetime=r["start_datetime"],
+            max_participants=r["max_participants"],
+            registration_open=r["registration_open"]
+        )
+        db.add(race)
+        db.flush()
+        # Generate new race ID map
+        old_event_id = r["event_id"]
+        event_races = race_map.get(old_event_id, [])
+        event_races.append(race.id)
+        race_map[old_event_id] = event_races
+    db.commit()
+
+    # ---- REGISTRATIONS ----
+    for reg in registrations:
+        db.add(Registration(
+            payment_status=reg["payment_status"],
+            payment_method=reg["payment_method"],
+            bib_number=reg["bib_number"],
+            notes=reg["notes"],
+            runner_id=reg["runner_id"],
+            race_id=race_map[reg["race_id"]][0]  # first race per mapping
+        ))
+    db.commit()
+
+    # ---- RESULTS ----
+    for res in results:
+        db.add(Result(
+            finish_time=res["finish_time"],
+            position_overall=res["position_overall"],
+            position_gender=res["position_gender"],
+            position_category=res["position_category"],
+            runner_id=res["runner_id"],
+            race_id=race_map[res["race_id"]][0]
+        ))
+    db.commit()
+
+    print("✅ Database seeded successfully")
+
 
 if __name__ == "__main__":
-    run_seed()
+    seed_database()

@@ -1,0 +1,48 @@
+[
+  { "event_id": 1, "name": "Cross del Río 6K", "distance_km": 6, "elevation_gain": 50, "terrain_type": "trail", "price": 8000, "start_datetime": "2025-04-20T08:00:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 1, "name": "Cross del Río 12K", "distance_km": 12, "elevation_gain": 150, "terrain_type": "trail", "price": 10000, "start_datetime": "2025-04-20T08:30:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 1, "name": "Cross del Río 21K", "distance_km": 21, "elevation_gain": 300, "terrain_type": "trail", "price": 15000, "start_datetime": "2025-04-20T09:00:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 1, "name": "Cross del Río 35K", "distance_km": 35, "elevation_gain": 600, "terrain_type": "trail", "price": 20000, "start_datetime": "2025-04-20T07:30:00", "max_participants": 300, "registration_open": true },
+
+  { "event_id": 2, "name": "Huasi Trail 7K", "distance_km": 7, "elevation_gain": 80, "terrain_type": "trail", "price": 6000, "start_datetime": "2025-05-10T08:00:00", "max_participants": 600, "registration_open": true },
+  { "event_id": 2, "name": "Huasi Trail 13K", "distance_km": 13, "elevation_gain": 200, "terrain_type": "trail", "price": 9000, "start_datetime": "2025-05-10T08:30:00", "max_participants": 600, "registration_open": true },
+  { "event_id": 2, "name": "Huasi Trail 21K", "distance_km": 21, "elevation_gain": 400, "terrain_type": "trail", "price": 14000, "start_datetime": "2025-05-10T09:00:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 2, "name": "Huasi Trail 30K", "distance_km": 30, "elevation_gain": 800, "terrain_type": "trail", "price": 18000, "start_datetime": "2025-05-10T07:30:00", "max_participants": 300, "registration_open": true },
+  { "event_id": 2, "name": "Huasi Trail 42K", "distance_km": 42, "elevation_gain": 1200, "terrain_type": "trail", "price": 22000, "start_datetime": "2025-05-10T07:00:00", "max_participants": 200, "registration_open": true },
+
+  { "event_id": 3, "name": "Osde Ultra Trail 13K", "distance_km": 13, "elevation_gain": 150, "terrain_type": "trail", "price": 9000, "start_datetime": "2025-09-08T08:30:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 3, "name": "Osde Ultra Trail 21K", "distance_km": 21, "elevation_gain": 300, "terrain_type": "trail", "price": 15000, "start_datetime": "2025-09-08T09:00:00", "max_participants": 400, "registration_open": true },
+  { "event_id": 3, "name": "Osde Ultra Trail 30K", "distance_km": 30, "elevation_gain": 700, "terrain_type": "trail", "price": 20000, "start_datetime": "2025-09-08T07:30:00", "max_participants": 300, "registration_open": true },
+  { "event_id": 3, "name": "Osde Ultra Trail 42K", "distance_km": 42, "elevation_gain": 1200, "terrain_type": "trail", "price": 26000, "start_datetime": "2025-09-08T07:00:00", "max_participants": 200, "registration_open": true },
+
+  { "event_id": 4, "name": "Champa Ultra 16K", "distance_km": 16, "elevation_gain": 300, "terrain_type": "trail", "price": 9000, "start_datetime": "2025-10-15T08:00:00", "max_participants": 600, "registration_open": true },
+  { "event_id": 4, "name": "Champa Ultra 24K", "distance_km": 24, "elevation_gain": 600, "terrain_type": "trail", "price": 15000, "start_datetime": "2025-10-15T07:30:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 4, "name": "Champa Ultra 30K", "distance_km": 30, "elevation_gain": 900, "terrain_type": "trail", "price": 20000, "start_datetime": "2025-10-15T07:00:00", "max_participants": 400, "registration_open": true },
+  { "event_id": 4, "name": "Champa Ultra 42K", "distance_km": 42, "elevation_gain": 1600, "terrain_type": "trail", "price": 26000, "start_datetime": "2025-10-15T06:30:00", "max_participants": 300, "registration_open": true },
+  { "event_id": 4, "name": "Champa Ultra 60K", "distance_km": 60, "elevation_gain": 2500, "terrain_type": "trail", "price": 30000, "start_datetime": "2025-10-15T06:00:00", "max_participants": 200, "registration_open": true },
+
+  { "event_id": 5, "name": "Nono Ultra 12K", "distance_km": 12, "elevation_gain": 200, "terrain_type": "trail", "price": 8000, "start_datetime": "2025-08-18T08:00:00", "max_participants": 600, "registration_open": true },
+  { "event_id": 5, "name": "Nono Ultra 23K", "distance_km": 23, "elevation_gain": 500, "terrain_type": "trail", "price": 14000, "start_datetime": "2025-08-18T07:30:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 5, "name": "Nono Ultra 38K", "distance_km": 38, "elevation_gain": 1200, "terrain_type": "trail", "price": 20000, "start_datetime": "2025-08-18T07:00:00", "max_participants": 300, "registration_open": true },
+  { "event_id": 5, "name": "Nono Ultra 50K", "distance_km": 50, "elevation_gain": 2000, "terrain_type": "trail", "price": 28000, "start_datetime": "2025-08-18T06:30:00", "max_participants": 200, "registration_open": true },
+
+  { "event_id": 6, "name": "UTACCH 15K", "distance_km": 15, "elevation_gain": 300, "terrain_type": "trail", "price": 9000, "start_datetime": "2025-11-02T08:00:00", "max_participants": 700, "registration_open": true },
+  { "event_id": 6, "name": "UTACCH 26K", "distance_km": 26, "elevation_gain": 800, "terrain_type": "trail", "price": 17000, "start_datetime": "2025-11-02T07:30:00", "max_participants": 500, "registration_open": true },
+  { "event_id": 6, "name": "UTACCH 38K", "distance_km": 38, "elevation_gain": 1500, "terrain_type": "trail", "price": 24000, "start_datetime": "2025-11-02T07:00:00", "max_participants": 400, "registration_open": true },
+  { "event_id": 6, "name": "UTACCH 55K", "distance_km": 55, "elevation_gain": 2500, "terrain_type": "trail", "price": 30000, "start_datetime": "2025-11-02T06:30:00", "max_participants": 300, "registration_open": true },
+  { "event_id": 6, "name": "UTACCH 85K", "distance_km": 85, "elevation_gain": 4000, "terrain_type": "trail", "price": 38000, "start_datetime": "2025-11-02T05:30:00", "max_participants": 200, "registration_open": true },
+  { "event_id": 6, "name": "UTACCH 120K", "distance_km": 120, "elevation_gain": 6000, "terrain_type": "trail", "price": 50000, "start_datetime": "2025-11-02T04:30:00", "max_participants": 150, "registration_open": true },
+
+  { "event_id": 7, "name": "Merlo Trail 15K", "distance_km": 15, "elevation_gain": 300, "terrain_type": "trail", "price": 9000, "start_datetime": "2026-03-22T08:00:00", "max_participants": 600, "registration_open": true },
+  { "event_id": 7, "name": "Merlo Trail 30K", "distance_km": 30, "elevation_gain": 900, "terrain_type": "trail", "price": 17000, "start_datetime": "2026-03-22T07:30:00", "max_participants": 400, "registration_open": true },
+  { "event_id": 7, "name": "Merlo Trail 42K", "distance_km": 42, "elevation_gain": 1600, "terrain_type": "trail", "price": 24000, "start_datetime": "2026-03-22T07:00:00", "max_participants": 300, "registration_open": true },
+  { "event_id": 7, "name": "Merlo Trail 60K", "distance_km": 60, "elevation_gain": 2500, "terrain_type": "trail", "price": 30000, "start_datetime": "2026-03-22T06:30:00", "max_participants": 200, "registration_open": true },
+
+  { "event_id": 8, "name": "Carlos Paz 5K", "distance_km": 5, "elevation_gain": 40, "terrain_type": "road", "price": 6000, "start_datetime": "2025-09-01T08:00:00", "max_participants": 800, "registration_open": true },
+  { "event_id": 8, "name": "Carlos Paz 10K", "distance_km": 10, "elevation_gain": 80, "terrain_type": "road", "price": 8000, "start_datetime": "2025-09-01T08:30:00", "max_participants": 700, "registration_open": true },
+  { "event_id": 8, "name": "Carlos Paz 21K", "distance_km": 21, "elevation_gain": 200, "terrain_type": "road", "price": 11000, "start_datetime": "2025-09-01T09:00:00", "max_participants": 600, "registration_open": true },
+
+  { "event_id": 9, "name": "Maratón RC 5K", "distance_km": 5, "elevation_gain": 30, "terrain_type": "road", "price": 5000, "start_datetime": "2025-12-05T08:00:00", "max_participants": 900, "registration_open": true },
+  { "event_id": 9, "name": "Maratón RC 10K", "distance_km": 10, "elevation_gain": 60, "terrain_type": "road", "price": 8000, "start_datetime": "2025-12-05T08:30:00", "max_participants": 800, "registration_open": true },
+  { "event_id": 9, "name": "Maratón RC 21K", "distance_km": 21, "elevation_gain": 120, "terrain_type": "road", "price": 12000, "start_datetime": "2025-12-05T09:00:00", "max_participants": 700, "registration_open": true }
+]

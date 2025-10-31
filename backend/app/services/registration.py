@@ -36,3 +36,8 @@ def delete(db: Session, reg_id: int):
     db.delete(reg)
     db.commit()
     return {"message": "Registration deleted successfully"}
+
+# cross functions
+
+def get_registrations_by_runner(db: Session, runner_id: int):
+    return db.query(Registration).filter(Registration.runner_id == runner_id).all()

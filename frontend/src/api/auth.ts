@@ -22,8 +22,15 @@ export const register = async (data: RegisterData) => {
 }
 
 export const getCurrentUser = async (token: string) => {
-  const res = await api.get("/users/me", {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  return res.data
+  try {
+    const res = await api.get("/users/me", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    return res.data
+  } catch (error: any) {
+    // Si el token no sirve, devolvemos null en lugar de lanzar un error
+    if (error.response?.status === 401) return null
+    console.error("Error al obtener el usuario:", error)
+    throw error // re-lanzamos si es algo inesperado
+  }
 }

@@ -15,7 +15,8 @@ const LoginPage: React.FC = () => {
     try {
       const res = await login({ email, password })
       setToken(res.access_token)
-      navigate("/dashboard")
+      // navigate("/dashboard")
+      navigate("/profile")
     } catch {
       setError("Credenciales inválidas")
     }

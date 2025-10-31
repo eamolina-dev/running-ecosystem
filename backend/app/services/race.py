@@ -36,3 +36,8 @@ def delete(db: Session, race_id: int):
     db.delete(race)
     db.commit()
     return {"message": "Race deleted successfully"}
+
+# cross functions
+
+def get_races_by_event(db: Session, event_id: int):
+    return db.query(Race).filter(Race.event_id == event_id).all()

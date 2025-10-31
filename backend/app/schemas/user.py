@@ -3,6 +3,7 @@ from typing import Optional
 from pydantic import BaseModel, EmailStr, Field
 
 class UserBase(BaseModel):
+    id: int
     email: EmailStr
     username: str
     role: Optional[str] = "runner"

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Prado Eventos",
+    "description": "Organización de eventos deportivos en Argentina.",
+    "website": "https://pradoeventos.com",
+    "logo_url": "",
+    "location": "Buenos Aires, Argentina",
+    "founded_year": 2012,
+    "social_links": "@pradoeventos",
+    "user_id": 11
+  },
+  {
+    "name": "Run Rio Cuarto",
+    "description": "Grupo organizador de carreras y actividades deportivas en Río Cuarto.",
+    "website": "https://runriocuarto.com",
+    "logo_url": "",
+    "location": "Río Cuarto, Córdoba, Argentina",
+    "founded_year": 2015,
+    "social_links": "@runriocuarto",
+    "user_id": 12
+  },
+  {
+    "name": "Mountain Race Logistica",
+    "description": "Logística y organización de carreras de montaña en Argentina.",
+    "website": "https://mountainracelogistica.com",
+    "logo_url": "",
+    "location": "Mendoza, Argentina",
+    "founded_year": 2010,
+    "social_links": "@mountainracelogistica",
+    "user_id": 13
+  },
+  {
+    "name": "MDXT",
+    "description": "Organización de eventos deportivos outdoors y trail running.",
+    "website": "https://mdxt.com",
+    "logo_url": "",
+    "location": "Bariloche, Argentina",
+    "founded_year": 2016,
+    "social_links": "@mdxtrunning",
+    "user_id": 14
+  },
+  {
+    "name": "Deportes Rio Cuarto",
+    "description": "Eventos deportivos y municipales en Río Cuarto.",
+    "website": "https://deportesriocuarto.gob.ar",
+    "logo_url": "",
+    "location": "Río Cuarto, Córdoba, Argentina",
+    "founded_year": 2008,
+    "social_links": "@deportesriocuarto",
+    "user_id": 15
+  }
+]

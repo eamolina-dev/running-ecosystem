@@ -3,6 +3,9 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.race import RaceBase, RaceCreate, RaceUpdate
 from app.services import race
+from app.services.race import (
+    get_races_by_event
+)
 
 router = APIRouter(prefix="/races", tags=["Races"])
 
@@ -30,3 +33,9 @@ def update_race(race_id: int, race_in: RaceUpdate, db: Session = Depends(get_db)
 @router.delete("/{race_id}")
 def delete_race(race_id: int, db: Session = Depends(get_db)):
     return race.delete(db, race_id)
+
+#  cross endpoints
+
+@router.get("/event/{event_id}/races", response_model=list[RaceBase])
+def read_races_by_event(event_id: int, db: Session = Depends(get_db)):
+    return get_races_by_event(db, event_id)

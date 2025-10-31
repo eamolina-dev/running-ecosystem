@@ -1,0 +1,12 @@
+[
+  { "finish_time": 4200, "position_overall": 1, "position_gender": 1, "position_category": 1, "runner_id": 1, "race_id": 1 },
+  { "finish_time": 4500, "position_overall": 2, "position_gender": 2, "position_category": 1, "runner_id": 2, "race_id": 1 },
+  { "finish_time": 4800, "position_overall": 3, "position_gender": 2, "position_category": 2, "runner_id": 4, "race_id": 2 },
+  { "finish_time": 5100, "position_overall": 4, "position_gender": 3, "position_category": 2, "runner_id": 5, "race_id": 2 },
+  { "finish_time": 3600, "position_overall": 1, "position_gender": 1, "position_category": 1, "runner_id": 6, "race_id": 3 },
+  { "finish_time": 3900, "position_overall": 2, "position_gender": 2, "position_category": 1, "runner_id": 7, "race_id": 3 },
+  { "finish_time": 7200, "position_overall": 5, "position_gender": 3, "position_category": 2, "runner_id": 8, "race_id": 4 },
+  { "finish_time": 6900, "position_overall": 4, "position_gender": 2, "position_category": 2, "runner_id": 9, "race_id": 4 },
+  { "finish_time": 3100, "position_overall": 1, "position_gender": 1, "position_category": 1, "runner_id": 10, "race_id": 5 },
+  { "finish_time": 3300, "position_overall": 2, "position_gender": 2, "position_category": 1, "runner_id": 3, "race_id": 5 }
+]

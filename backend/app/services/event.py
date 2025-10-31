@@ -1,9 +1,10 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from app.models.event import Event
+from app.models.organization import Organization
 from app.schemas.event import EventCreate, EventUpdate
 
-def get_all(db: Session):
+def get_all_events(db: Session):
     return db.query(Event).all()
 
 
@@ -36,3 +37,8 @@ def delete(db: Session, event_id: int):
     db.delete(event)
     db.commit()
     return {"message": "Event deleted successfully"}
+
+# cross functions
+
+def get_events_by_org(db: Session, org_id: int):
+    return db.query(Event).filter(Event.organization_id == org_id).all()

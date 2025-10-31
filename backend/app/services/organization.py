@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from app.models.organization import Organization
 from app.schemas.organization import OrganizationCreate, OrganizationUpdate
+from app.models.event import Event
 
 def get_all(db: Session):
     return db.query(Organization).all()

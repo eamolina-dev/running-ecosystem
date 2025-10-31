@@ -1,37 +1,60 @@
 import React, { createContext, useState, useEffect } from "react"
+import type { ReactNode } from "react" // 👈 esta línea es la clave
 import { getCurrentUser } from "../api/auth"
 
-interface User {
+// --- Tipado de usuario
+// interface User {
+//   id: number
+//   email: string
+//   username: string
+//   role: string
+// }
+
+type User = {
   id: number
   email: string
   username: string
-  role: string
+  role: "runner" | "organization"
+  runner_id?: number
+  organization_id?: number
 }
 
+
+// --- Tipado del contexto
 interface AuthContextType {
   user: User | null
   token: string | null
+  loading: boolean
   login: (token: string) => void
   logout: () => void
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null)
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null)
   const [token, setToken] = useState<string | null>(localStorage.getItem("token"))
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchUser = async () => {
-      if (token) {
-        try {
-          const data = await getCurrentUser(token)
-          setUser(data)
-        } catch {
-          logout()
-        }
+      if (!token) {
+        setLoading(false)
+        return
+      }
+
+      try {
+        const data = await getCurrentUser(token)
+        if (data) setUser(data)
+        else logout()
+      } catch (error) {
+        console.error("Error obteniendo usuario:", error)
+        logout()
+      } finally {
+        setLoading(false)
       }
     }
+
     fetchUser()
   }, [token])
 
@@ -47,7 +70,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   )

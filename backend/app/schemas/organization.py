@@ -12,7 +12,7 @@ class OrganizationBase(BaseModel):
 
 
 class OrganizationCreate(OrganizationBase):
-    admin_id: int
+    user_id: int
 
 
 class OrganizationUpdate(BaseModel):
@@ -27,7 +27,7 @@ class OrganizationUpdate(BaseModel):
 
 class OrganizationRead(OrganizationBase):
     id: int
-    admin_id: int
+    user_id: int
 
     class Config:
         orm_mode = True

@@ -1,0 +1,122 @@
+[
+  {
+    "full_name": "Enzo Perez",
+    "birth_date": "1995-05-12",
+    "gender": "male",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Runner aficionado",
+    "instagram": "enzo.run",
+    "team_name": "Runners BA",
+    "user_id": 1
+  },
+  {
+    "full_name": "Maria Lopez",
+    "birth_date": "1997-08-20",
+    "gender": "female",
+    "city": "Córdoba",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Amante del running",
+    "instagram": "maria.run",
+    "team_name": "Cordoba Runners",
+    "user_id": 2
+  },
+  {
+    "full_name": "Juan Martinez",
+    "birth_date": "1992-02-10",
+    "gender": "male",
+    "city": "Mendoza",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Running y montaña",
+    "instagram": "juan_mt",
+    "team_name": "Mendoza Trail",
+    "user_id": 3
+  },
+  {
+    "full_name": "Lucas Fernandez",
+    "birth_date": "1998-11-01",
+    "gender": "male",
+    "city": "Rosario",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Corredor amateur",
+    "instagram": "",
+    "team_name": "Rosario Runners",
+    "user_id": 4
+  },
+  {
+    "full_name": "Sofia Garcia",
+    "birth_date": "2000-09-15",
+    "gender": "female",
+    "city": "La Plata",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Triatleta y runner",
+    "instagram": "sofi_fit",
+    "team_name": "La Plata Team",
+    "user_id": 5
+  },
+  {
+    "full_name": "Valentina Diaz",
+    "birth_date": "1996-03-22",
+    "gender": "female",
+    "city": "Salta",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Amo correr largas distancias",
+    "instagram": "",
+    "team_name": "Salta Run",
+    "user_id": 6
+  },
+  {
+    "full_name": "Martin Herrera",
+    "birth_date": "1994-12-05",
+    "gender": "male",
+    "city": "Neuquén",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Trail y calle",
+    "instagram": "",
+    "team_name": "Patagonia Runners",
+    "user_id": 7
+  },
+  {
+    "full_name": "Carla Romero",
+    "birth_date": "1999-04-30",
+    "gender": "female",
+    "city": "Tucumán",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Corredora amateur",
+    "instagram": "carla.run",
+    "team_name": "Tucumán Run",
+    "user_id": 8
+  },
+  {
+    "full_name": "Nicolas Torres",
+    "birth_date": "1993-06-18",
+    "gender": "male",
+    "city": "Mar del Plata",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Maratonista",
+    "instagram": "",
+    "team_name": "MDQ Runners",
+    "user_id": 9
+  },
+  {
+    "full_name": "Agustin Molina",
+    "birth_date": "1995-07-07",
+    "gender": "male",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "avatar_url": "",
+    "bio": "Apasionado del running",
+    "instagram": "agustin.run",
+    "team_name": "BA Running Team",
+    "user_id": 10
+  }
+]

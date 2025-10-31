@@ -3,6 +3,9 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.registration import RegistrationBase, RegistrationCreate, RegistrationUpdate
 from app.services import registration
+from app.services.registration import (
+    get_registrations_by_runner
+)
 
 router = APIRouter(prefix="/registrations", tags=["Registrations"])
 
@@ -30,3 +33,9 @@ def update_registration(reg_id: int, reg_in: RegistrationUpdate, db: Session = D
 @router.delete("/{reg_id}")
 def delete_registration(reg_id: int, db: Session = Depends(get_db)):
     return registration.delete(db, reg_id)
+
+#  cross endpoints
+
+@router.get("/runner/{runner_id}/registrations", response_model=list[RegistrationBase])
+def read_registrations_by_runner(runner_id: int, db: Session = Depends(get_db)):
+    return get_registrations_by_runner(db, runner_id)

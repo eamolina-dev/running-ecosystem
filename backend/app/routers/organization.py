@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.organization import OrganizationBase, OrganizationCreate, OrganizationUpdate
 from app.services import organization
+# from app.services.organization import get_org_events
 
 router = APIRouter(prefix="/organizations", tags=["Organizations"])
 

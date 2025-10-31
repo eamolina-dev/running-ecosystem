@@ -12,7 +12,7 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     username = Column(String, unique=True, nullable=False)
     hashed_password = Column(String, nullable=False)
-    role = Column(String, default="runner")  # runner, org_admin, superadmin
+    role = Column(String, default="runner")  # runner, organization, superadmin
     is_active = Column(Boolean, default=True)
     is_verified = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)

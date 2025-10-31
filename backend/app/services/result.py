@@ -36,3 +36,11 @@ def delete(db: Session, result_id: int):
     db.delete(result)
     db.commit()
     return {"message": "Result deleted successfully"}
+
+# cross functions
+
+def get_results_by_race(db: Session, race_id: int):
+    return db.query(Result).filter(
+        Result.race_id == race_id,
+        # Result.status == "finished"  # opcional, solo completados
+    ).all()

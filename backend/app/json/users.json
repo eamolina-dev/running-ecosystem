@@ -1,0 +1,123 @@
+[
+  {
+    "email": "enzo@gmail.com",
+    "username": "enzo",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "maria@gmail.com",
+    "username": "maria",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "juan@gmail.com",
+    "username": "juan",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "lucas@gmail.com",
+    "username": "lucas",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "sofia@gmail.com",
+    "username": "sofia",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "valentina@gmail.com",
+    "username": "valentina",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "martin@gmail.com",
+    "username": "martin",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "carla@gmail.com",
+    "username": "carla",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "nico@gmail.com",
+    "username": "nico",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "agustin@gmail.com",
+    "username": "agustin",
+    "role": "runner",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+
+  {
+    "email": "org1@gmail.com",
+    "username": "org1",
+    "role": "org_admin",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "org2@gmail.com",
+    "username": "org2",
+    "role": "org_admin",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "org3@gmail.com",
+    "username": "org3",
+    "role": "org_admin",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "org4@gmail.com",
+    "username": "org4",
+    "role": "org_admin",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  },
+  {
+    "email": "org5@gmail.com",
+    "username": "org5",
+    "role": "org_admin",
+    "is_active": true,
+    "is_verified": false,
+    "password": "123456"
+  }
+]

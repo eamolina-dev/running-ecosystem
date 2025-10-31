@@ -5,13 +5,37 @@ from app.schemas.user import UserBase, UserCreate, UserUpdate
 from app.services import user
 from app.core.deps import get_current_user
 from app.models.user import User
+from app.models.runner import Runner
+from app.models.organization import Organization
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
+@router.get("/me")
+def get_me(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    if current_user.role == "runner":
+        runner = db.query(Runner).filter(Runner.user_id == current_user.id).first()
+        return {
+            "id": current_user.id,
+            "email": current_user.email,
+            "role": current_user.role,
+            "runner_id": runner.id if runner else None
+        }
 
-@router.get("/me", response_model=UserBase)
-def read_users_me(current_user: User = Depends(get_current_user)):
+    if current_user.role == "organization":
+        org = db.query(Organization).filter(Organization.user_id == current_user.id).first()
+        return {
+            "id": current_user.id,
+            "email": current_user.email,
+            "role": current_user.role,
+            "organization_id": org.id if org else None
+        }
+
     return current_user
+
+
+# @router.get("/me", response_model=UserBase)
+# def read_users_me(current_user: User = Depends(get_current_user)):
+#     return current_user
 
 @router.get("/", response_model=list[UserBase])
 def get_all_users(db: Session = Depends(get_db)):
