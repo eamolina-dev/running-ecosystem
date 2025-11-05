@@ -9,6 +9,7 @@ import EventPage from "../pages/EventPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import EventsList from "../borrador/EventList"
 import EventDetail from "../borrador/EventDetail"
+import { PaymentSuccess, PaymentFailure, PaymentPending } from "@/pages/Payments"
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,9 @@ export const router = createBrowserRouter([
       // { path:"/events", element: <EventsList /> }, DEBERIA USAR UN EVENT LIST ???
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      { path: "/payment/success", element: <PaymentSuccess /> },
+      { path: "/payment/failure", element: <PaymentFailure /> },
+      { path: "/payment/pending", element: <PaymentPending /> },
       
       // private
       {

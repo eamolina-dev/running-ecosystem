@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import (
     user, runner, organization,
     event, race, registration, result,
-    auth
+    auth, payments
 )
 from app.db.base import Base
 from app.db.session import engine
@@ -36,3 +36,4 @@ app.include_router(registration.router)
 app.include_router(result.router)
 
 app.include_router(auth.router)
+app.include_router(payments.router)

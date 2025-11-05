@@ -3,6 +3,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 class RaceBase(BaseModel):
+    id: int
     name: Optional[str] = None
     distance_km: float
     elevation_gain: Optional[float] = None

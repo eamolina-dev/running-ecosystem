@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { fetchEventById, fetchOrgByEvent, fetchRacesByEvent } from "@/api/event"
 import type { Event, Race, Organization } from "@/types/types"
-import RaceCard from "./RaceCard"
+import RaceCard from "@/components/RaceCard"
 import { useNavigate } from "react-router-dom"
 
 export default function EventPage() {

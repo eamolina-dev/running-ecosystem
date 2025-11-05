@@ -36,6 +36,16 @@ export const fetchOrgByEvent = async (eventId: number) => {
 export const fetchRacesByEvent = async (eventId: number) =>  {
   try {
     const res = await api.get(`${url + '/' + eventId}/races`)
+    console.log("RACESSSSSSSSSSSSSSSSSSSSSSSSSS");
+    console.log("RACESSSSSSSSSSSSSSSSSSSSSSSSSS");
+    console.log("RACESSSSSSSSSSSSSSSSSSSSSSSSSS");
+
+    console.log(res.data);
+
+    console.log("RACESSSSSSSSSSSSSSSSSSSSSSSSSS");
+    console.log("RACESSSSSSSSSSSSSSSSSSSSSSSSSS");
+    console.log("RACESSSSSSSSSSSSSSSSSSSSSSSSSS");
+
     return res.data
   } catch (error) {
     console.error("Error al obtener las carreras:", error)

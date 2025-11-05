@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { fetchEvents } from "@/api/event"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import type { Event } from "@/types/types"
-import EventCard from "./EventCard"
+import EventCard from "../components/EventCard"
 
 
 export default function Calendar() {

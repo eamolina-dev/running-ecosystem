@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import EventCard from "@/pages/EventCard"
+import EventCard from "@/components/EventCard"
 import { useNavigate } from "react-router-dom"
 import { fetchEventsByOrg } from "@/api/organization"
 

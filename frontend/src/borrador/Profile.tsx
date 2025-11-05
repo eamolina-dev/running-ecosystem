@@ -3,7 +3,7 @@ import { fetchEventById } from "../api/event"
 import { fetchEventsByOrg } from "../api/organization"
 import { fetchRegistrationsByRunner } from "../api/runner"
 import { useAuth } from "@/hooks/useAuth"
-import EventCard from "../pages/EventCard"
+import EventCard from "../components/EventCard"
 // import { Event } from "@/types/event"
 import { useNavigate } from "react-router-dom"
 
