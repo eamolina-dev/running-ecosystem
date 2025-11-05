@@ -60,6 +60,7 @@ export interface OrganizationProfile {
 
 export interface Organization {
   id: number
+  user_id: number
   name: string
   website?: string
   instagram?: string

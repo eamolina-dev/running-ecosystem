@@ -69,7 +69,7 @@ const EventCard: React.FC<EventCardProps> = ({
             <span
               onClick={(e) => {
                 e.stopPropagation()
-                navigate(`/profile/${organization.id}`)
+                navigate(`/users/${organization.user_id}`)
               }}
               className="text-blue-600 hover:underline cursor-pointer"
             >

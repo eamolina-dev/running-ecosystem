@@ -1,6 +1,8 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from app.models.user import User
+from app.models.runner import Runner
+from app.models.organization import Organization
 from app.schemas.user import UserCreate, UserUpdate
 from app.core.security import get_password_hash
 
@@ -8,12 +10,42 @@ def get_all(db: Session):
     return db.query(User).all()
 
 
-def get_by_id(db: Session, user_id: int):
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
-    return user
+# def get_by_id(db: Session, user_id: int):
+#     user = db.query(User).filter(User.id == user_id).first()
+#     if not user:
+#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+#     return user
 
+# def get_by_id(db: Session, user_id: int):
+#     user = db.query(User).filter(User.id == user_id).first()
+#     if not user:
+#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+#     # Buscar perfiles
+#     org = db.query(Organization).filter(Organization.user_id == user_id).first()
+#     runner = db.query(Runner).filter(Runner.user_id == user_id).first()
+
+#     return {
+#         "id": user.id,
+#         "username": user.username,
+#         "email": user.email,
+#         "role": user.role,
+#         "organization_id": org.id if org else None,
+#         "runner_id": runner.id if runner else None
+#     }
+
+def format_user_with_profile(db, user: User):
+    org = db.query(Organization).filter(Organization.user_id == user.id).first()
+    runner = db.query(Runner).filter(Runner.user_id == user.id).first()
+
+    return {
+        "id": user.id,
+        "username": user.username,
+        "email": user.email,
+        "role": user.role,
+        "organization_id": org.id if org else None,
+        "runner_id": runner.id if runner else None
+    }
 
 def get_by_email(db: Session, email: str):
     return db.query(User).filter(User.email == email).first()

@@ -34,7 +34,7 @@ export default function ProfilePage() {
       tabs={
         profile.role === "runner" 
           ? <RunnerTabs />
-          : <OrganizationTabs id={profile.id} role={profile.role} />
+          : <OrganizationTabs id={profile.organization_id} role={profile.role} />
           // ? <RunnerTabs userId={profile.id} isOwner={isOwner} />
           // : <OrganizationTabs userId={profile.id} isOwner={isOwner} />
       }

@@ -49,6 +49,8 @@ def get_org_by_event(db: Session, event_id: int):
     org = db.query(Organization).filter(Organization.id == event.organization_id).first()
     if not org:
         raise HTTPException(status_code=404, detail="Organization not found for this event")
+    
+    # print(org)
 
     return org
 

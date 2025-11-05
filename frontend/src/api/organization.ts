@@ -12,7 +12,17 @@ const url = "/organizations"
 //   }
 // }
 
-export const fetchEventsByOrg = async (orgId: number) => {
-  const res = await api.get(`/${url + '/' + orgId}/events`)
-  return res.data
+// export const fetchEventsByOrg = async (orgId: number) => {
+//   const res = await api.get(`/${url + '/' + orgId}/events`)
+//   return res.data
+// }
+
+export const fetchEventsByOrg = async (orgId: number) =>  {
+  try {
+    const res = await api.get(`${url + '/' + orgId}/events`)
+    return res.data
+  } catch (error) {
+    console.error("Error al obtener los eventos:", error)
+    throw error
+  }
 }
