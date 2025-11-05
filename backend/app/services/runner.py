@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from app.models.runner import Runner
+from app.models.registration import Registration
 from app.schemas.runner import RunnerCreate, RunnerUpdate
 
 def get_all(db: Session):
@@ -36,3 +37,8 @@ def delete(db: Session, runner_id: int):
     db.delete(runner)
     db.commit()
     return {"message": "Runner deleted successfully"}
+
+# cross functions
+
+def get_registrations_by_runner(db: Session, runner_id: int):
+    return db.query(Registration).filter(Registration.runner_id == runner_id).all()

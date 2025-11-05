@@ -37,3 +37,8 @@ def delete(db: Session, org_id: int):
     db.delete(org)
     db.commit()
     return {"message": "Organization deleted successfully"}
+
+
+
+def get_events_by_org(db: Session, org_id: int):
+    return db.query(Event).filter(Event.organization_id == org_id).all()

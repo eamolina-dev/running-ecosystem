@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from app.models.race import Race
+from app.models.result import Result
 from app.schemas.race import RaceCreate, RaceUpdate
 
 def get_all(db: Session):
@@ -39,5 +40,8 @@ def delete(db: Session, race_id: int):
 
 # cross functions
 
-def get_races_by_event(db: Session, event_id: int):
-    return db.query(Race).filter(Race.event_id == event_id).all()
+def get_results_by_race(db: Session, race_id: int):
+    return db.query(Result).filter(
+        Result.race_id == race_id,
+        # Result.status == "finished"  # opcional, solo completados
+    ).all()

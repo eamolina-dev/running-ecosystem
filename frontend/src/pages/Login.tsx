@@ -1,38 +1,64 @@
-import React, { useState } from "react"
-import { useAuth } from "../hooks/useAuth"
-import { login } from "../api/auth"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { login } from "../api/auth"
+import { useAuth } from "../hooks/useAuth"
 
-const LoginPage: React.FC = () => {
+const Login = () => {
+  const { login: setAuth } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-  const { login: setToken } = useAuth()
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
+
     try {
       const res = await login({ email, password })
-      setToken(res.access_token)
-      // navigate("/dashboard")
+      setAuth(res.access_token) // guarda token y user en contexto
       navigate("/profile")
     } catch {
-      setError("Credenciales inválidas")
+      setError("Email o contraseña incorrectos.")
     }
   }
 
   return (
-    <div className="flex flex-col items-center mt-20">
-      <h2 className="text-2xl font-bold mb-4">Iniciar sesión</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-64">
-        <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Contraseña" />
-        <button type="submit">Ingresar</button>
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-xl shadow-lg w-80"
+      >
+        <h2 className="text-2xl font-semibold mb-4 text-center">Iniciar sesión</h2>
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+
+        <label className="block mb-2 text-sm font-medium">Email</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full border rounded-md px-3 py-2 mb-3 focus:ring-2 focus:ring-blue-500 outline-none"
+          required
+        />
+
+        <label className="block mb-2 text-sm font-medium">Contraseña</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border rounded-md px-3 py-2 mb-4 focus:ring-2 focus:ring-blue-500 outline-none"
+          required
+        />
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          Iniciar sesión
+        </button>
       </form>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
     </div>
   )
 }
 
-export default LoginPage
+export default Login

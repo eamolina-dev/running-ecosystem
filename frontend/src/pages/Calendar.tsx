@@ -2,14 +2,9 @@
 import { useEffect, useState } from "react"
 import { fetchEvents } from "@/api/event"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import type { Event } from "@/types/types"
+import EventCard from "./EventCard"
 
-interface Event {
-  id: number
-  name: string
-  location: string
-  date: string
-  organization_name: string
-}
 
 export default function Calendar() {
   const [events, setEvents] = useState<Event[]>([])
@@ -25,16 +20,16 @@ export default function Calendar() {
     <div className="max-w-3xl mx-auto mt-10 space-y-4">
       <h1 className="text-2xl font-bold mb-4 text-center">Calendario de Eventos</h1>
       {events.map((event) => (
-        <Card key={event.id}>
-          <CardHeader>
-            <CardTitle>{event.name}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p><strong>Fecha:</strong> {new Date(event.date).toLocaleDateString()}</p>
-            <p><strong>Ubicación:</strong> {event.location}</p>
-            <p><strong>Organiza:</strong> {event.organization_name}</p>
-          </CardContent>
-        </Card>
+        <EventCard 
+          id={event.id} 
+          name={event.name} 
+          location={""} 
+          start_date={event.start_date} 
+          end_date={event.end_date} 
+          year={2020} 
+          status={"upcoming"}
+          // organization={null}
+        />
       ))}
     </div>
   )

@@ -2,9 +2,10 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.race import RaceBase, RaceCreate, RaceUpdate
+from app.schemas.result import ResultBase
 from app.services import race
 from app.services.race import (
-    get_races_by_event
+    get_results_by_race
 )
 
 router = APIRouter(prefix="/races", tags=["Races"])
@@ -36,6 +37,7 @@ def delete_race(race_id: int, db: Session = Depends(get_db)):
 
 #  cross endpoints
 
-@router.get("/event/{event_id}/races", response_model=list[RaceBase])
-def read_races_by_event(event_id: int, db: Session = Depends(get_db)):
-    return get_races_by_event(db, event_id)
+
+@router.get("/{race_id}/results", response_model=list[ResultBase])
+def read_results_by_race(race_id: int, db: Session = Depends(get_db)):
+    return get_results_by_race(db, race_id)

@@ -3,11 +3,10 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.event import EventBase, EventCreate, EventUpdate
+from app.schemas.organization import OrganizationBase
+from app.schemas.race import RaceBase
 from app.services import event
-from app.services.event import (
-    get_events_by_org
-)
-from app.core.deps import get_current_user
+from app.services.event import get_org_by_event, get_races_by_event
 from app.models.user import User
 
 router = APIRouter(prefix="/events", tags=["Events"])
@@ -39,6 +38,10 @@ def delete_event(event_id: int, db: Session = Depends(get_db)):
 
 #  cross endpoints
 
-@router.get("/org/{org_id}/events", response_model=list[EventBase])
-def read_events_by_org(org_id: int, db: Session = Depends(get_db)):
-    return get_events_by_org(db, org_id)
+@router.get("/{event_id}/organization", response_model=OrganizationBase)
+def read_event_organization(event_id: int, db: Session = Depends(get_db)):
+    return get_org_by_event(db, event_id)
+
+@router.get("/{event_id}/races", response_model=list[RaceBase])
+def read_races_by_event(event_id: int, db: Session = Depends(get_db)):
+    return get_races_by_event(db, event_id)

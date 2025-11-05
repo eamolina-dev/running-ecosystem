@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.runner import RunnerBase, RunnerCreate, RunnerUpdate
+from app.schemas.registration import RegistrationBase 
 from app.services import runner
 
 router = APIRouter(prefix="/runners", tags=["Runners"])
@@ -30,3 +31,9 @@ def update_runner(runner_id: int, runner_in: RunnerUpdate, db: Session = Depends
 @router.delete("/{runner_id}")
 def delete_runner(runner_id: int, db: Session = Depends(get_db)):
     return runner.delete(db, runner_id)
+
+#  cross endpoints
+
+@router.get("/{runner_id}/registrations", response_model=list[RegistrationBase])
+def read_registrations_by_runner(runner_id: int, db: Session = Depends(get_db)):
+    return runner.get_registrations_by_runner(db, runner_id)

@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from app.models.event import Event
 from app.models.organization import Organization
+from app.models.race import Race
 from app.schemas.event import EventCreate, EventUpdate
 
 def get_all_events(db: Session):
@@ -40,5 +41,17 @@ def delete(db: Session, event_id: int):
 
 # cross functions
 
-def get_events_by_org(db: Session, org_id: int):
-    return db.query(Event).filter(Event.organization_id == org_id).all()
+def get_org_by_event(db: Session, event_id: int):
+    event = db.query(Event).filter(Event.id == event_id).first()
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+
+    org = db.query(Organization).filter(Organization.id == event.organization_id).first()
+    if not org:
+        raise HTTPException(status_code=404, detail="Organization not found for this event")
+
+    return org
+
+
+def get_races_by_event(db: Session, event_id: int):
+    return db.query(Race).filter(Race.event_id == event_id).all()

@@ -1,9 +1,10 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.organization import OrganizationBase, OrganizationCreate, OrganizationUpdate
+from app.schemas.event import EventBase
 from app.services import organization
-# from app.services.organization import get_org_events
+# from app.services.organization import get_events_by_org
 
 router = APIRouter(prefix="/organizations", tags=["Organizations"])
 
@@ -31,3 +32,9 @@ def update_org(org_id: int, org_in: OrganizationUpdate, db: Session = Depends(ge
 @router.delete("/{org_id}")
 def delete_org(org_id: int, db: Session = Depends(get_db)):
     return organization.delete(db, org_id)
+
+# cross endpoints
+
+@router.get("/{org_id}/events", response_model=list[EventBase])
+def read_events_by_org(org_id: int, db: Session = Depends(get_db)):
+    return organization.get_events_by_org(db, org_id)

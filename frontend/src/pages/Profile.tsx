@@ -1,89 +1,43 @@
-import { useEffect, useState } from "react"
-import { fetchEventById, fetchOrgEvents } from "../api/event"
-import { fetchRunnerRegistrations } from "../api/registration"
 import { useAuth } from "@/hooks/useAuth"
-import EventDetailCard from "./EventDetail"
-// import { Event } from "@/types/event"
-import { useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 
-const Profile = () => {
-  const { user, loading } = useAuth()
+import ProfileLayout from "@/components/profile/ProfileLayout"
+import RunnerTabs from "@/components/profile/RunnerTabs"
+import OrganizationTabs from "@/components/profile/OrganizationTabs"
+import ProfileSidebar from "@/components/profile/ProfileSidebar"
 
-  if (loading) return <p>Cargando...</p>
-  if (!user) return <p>No hay usuario</p>
-  
-  const [events, setEvents] = useState<any[]>([])
-  const [registrations, setRegistrations] = useState<any[]>([])
-  const navigate = useNavigate()
+import { fetchUserById } from "@/api/users"
+
+export default function ProfilePage() {
+  const { user: loggedUser } = useAuth()
+  const { id } = useParams()
+  const [profile, setProfile] = useState<any>(null)
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!user) return
+    const userId = id ? Number(id) : loggedUser?.id
+    if (!userId) return
+  
+    fetchUserById(userId).then(setProfile)
+  }, [id, loggedUser])  
 
-      if (user.role === "organization") {
-        const orgEvents = await fetchOrgEvents(user.organization_id || 0)
-        setEvents(orgEvents)
-      }
-      if (user.role === "runner") {
-        const runnerRegs = await fetchRunnerRegistrations(user.runner_id || 0)
-        setRegistrations(runnerRegs)
-      }
-    }
-    fetchData()
-  }, [user])
+  if (!profile) return <p>Cargando...</p>
 
-  if (!user) return <p>Cargando...</p>
-
-  console.log("==========");
-  console.log("==========");
-  console.log(events);
-  console.log("==========");
-  console.log("==========");
+  const isOwner = loggedUser && loggedUser.id === profile.id
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold">{user.username}</h1>
-      <p><strong>Email:</strong> {user.email}</p>
-
-      {/* {user.role === "organization" && (
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold">Mis Eventos</h2>
-          {events.map(ev => (
-            <div key={ev.id} className="p-2 border rounded mb-2">{ev.name}</div>
-          ))}
-        </div>
-      )} */}
-
-      {user.role === "organization" && (
-        <div className="mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map(ev => (
-            <EventDetailCard
-              key={ev.id}
-              id={ev.id}
-              name={ev.name}
-              location={ev.location}
-              startDate={ev.start_date}
-              endDate={ev.end_date}
-              year={ev.year}
-              status={ev.status}
-              onClick={(id) => navigate(`/event/${id}`)}
-            />
-          ))}
-        </div>
-      )}
-
-      {user.role === "runner" && (
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold">Mis Inscripciones</h2>
-          {registrations.map(r => (
-            <div key={r.id} className="p-2 border rounded mb-2">
-              Race ID: {r.race_id} - Estado: {r.status}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <ProfileLayout
+      sidebar={
+        <ProfileSidebar name={profile?.username || ""} email={profile?.email || ""} />
+        // <ProfileSidebar user={profile} isOwner={isOwner} />
+      }
+      tabs={
+        profile.role === "runner" 
+          ? <RunnerTabs />
+          : <OrganizationTabs id={profile.id} role={profile.role} />
+          // ? <RunnerTabs userId={profile.id} isOwner={isOwner} />
+          // : <OrganizationTabs userId={profile.id} isOwner={isOwner} />
+      }
+    />
   )
 }
-
-export default Profile

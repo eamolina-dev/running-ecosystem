@@ -3,9 +3,6 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.result import ResultBase, ResultCreate, ResultUpdate
 from app.services import result
-from app.services.result import (
-    get_results_by_race
-)
 
 router = APIRouter(prefix="/results", tags=["Results"])
 
@@ -35,7 +32,3 @@ def delete_result(result_id: int, db: Session = Depends(get_db)):
     return result.delete(db, result_id)
 
 #  cross endpoints
-
-@router.get("/race/{race_id}/results", response_model=list[ResultBase])
-def read_results_by_race(race_id: int, db: Session = Depends(get_db)):
-    return get_results_by_race(db, race_id)
