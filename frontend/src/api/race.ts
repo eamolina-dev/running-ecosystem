@@ -1,3 +1,4 @@
+import { ChartNoAxesColumnIcon } from "lucide-react"
 import api from "./client"
 
 const url = "/races"
@@ -38,6 +39,13 @@ export async function fetchResultsByRace(raceId: number) {
 // 🟡 Crear carrera
 export async function createRace(data: any, token: string) {
   try {
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log(data);
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
     const res = await api.post(url, data, {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -51,6 +59,13 @@ export async function createRace(data: any, token: string) {
 // 🟡 Actualizar carrera
 export async function updateRace(id: number, data: any, token: string) {
   try {
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log(data);
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
     const res = await api.put(`${url}/${id}`, data, {
       headers: { Authorization: `Bearer ${token}` },
     })

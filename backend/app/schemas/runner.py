@@ -38,4 +38,4 @@ class RunnerRead(RunnerBase):
     average_pace: Optional[float] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

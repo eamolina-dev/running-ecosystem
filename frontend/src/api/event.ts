@@ -49,6 +49,13 @@ export async function fetchRacesByEvent(eventId: number) {
 // 🟡 Crear un nuevo evento
 export async function createEvent(data: any, token: string) {
   try {
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log(data);
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
     const res = await api.post(url, data, {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -62,6 +69,13 @@ export async function createEvent(data: any, token: string) {
 // 🟡 Actualizar un evento
 export async function updateEvent(id: number, data: any, token: string) {
   try {
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log(data);
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
+    console.log("DATAAAAAAAA");
     const res = await api.put(`${url}/${id}`, data, {
       headers: { Authorization: `Bearer ${token}` },
     })

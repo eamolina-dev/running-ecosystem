@@ -4,43 +4,51 @@ import { fetchEventsByOrg } from "@/api/organization"
 import { useAuth } from "@/hooks/useAuth"
 import EventCard from "@/components/EventCard"
 import { Button } from "@/components/ui/button"
-import type { Event } from "@/types/types"
+import type { Event, Race } from "@/types/types"
 import EventItem from "./EventItem"
+import RaceItem from "./RaceItem"
 
-export default function EventList() {
-  const { user } = useAuth()
+interface RaceListProps {
+  races: Race[]
+  // onEdit?: (id: number) => void
+  // onDelete?: (id: number) => void
+}
+
+
+const RaceList: React.FC<RaceListProps> = ({races}) => {
+  // const { user } = useAuth()
   const navigate = useNavigate()
-  const [events, setEvents] = useState<Event[]>([])
+  // const [races, setRaces] = useState<Event[]>([])
 
-  useEffect(() => {
-    if (!user?.organization_id) return
-    fetchEventsByOrg(user.organization_id).then(setEvents).catch(console.error)
-  }, [user])
+  // useEffect(() => {
+  //   if (!eventId) return
+  //   fetchEventsByOrg(eventId.organization_id).then(setRaces).catch(console.error)
+  // }, [eventId])
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Mis Eventos</h1>
+        <h1 className="text-2xl font-semibold">Mis Carreras</h1>
         <Button
           onClick={() =>
-            navigate("/events/create", {
-              state: { organization_id: user?.organization_id },
+            navigate("/races/create", {
+              // state: { eventId: eventId },
             })
           }
         >
-          Crear Evento
+          Crear Carrera
         </Button>
       </div>
 
-      {events.length === 0 ? (
-        <p className="text-gray-500 text-center">No hay eventos creados.</p>
+      {races.length === 0 ? (
+        <p className="text-gray-500 text-center">No hay carreras creadas.</p>
       ) : (
         <div className="space-y-4">
-          {events.map((ev) => (
-            <EventItem 
-              event={ev}
-              onEdit={() => navigate(`/events/${ev.id}/edit`)}
-              onDelete={() => console.log("EVENTO BORRADO!!!")}
+          {races.map((r) => (
+            <RaceItem 
+              race={r}
+              onEdit={() => navigate(`/races/${r.id}/edit`)}
+              onDelete={() => console.log("CARRERA BORRADA!!!")}
             />
             // <EventCard
             //   key={ev.id}
@@ -59,3 +67,5 @@ export default function EventList() {
     </div>
   )
 }
+
+export default RaceList

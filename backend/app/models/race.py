@@ -15,7 +15,8 @@ class Race(Base):
     elevation_gain = Column(Float, nullable=True)
     terrain_type = Column(String, nullable=True)  # trail, street, mixto, etc
     price = Column(Float, nullable=True)
-    start_datetime = Column(DateTime, nullable=False)
+    start_datetime = Column(DateTime, nullable=True)
+    # start_datetime = Column(DateTime, nullable=False)
     max_participants = Column(Integer, nullable=True)
     registration_open = Column(Boolean, default=True)
 

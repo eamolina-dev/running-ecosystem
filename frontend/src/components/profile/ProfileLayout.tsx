@@ -5,7 +5,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import type { ReactNode } from "react"
-import CreateEvent from "@/components/forms/CreateEventForm"
+import CreateEvent from "@/components/forms/EventForm"
 
 interface ProfileLayoutProps {
   sidebar: ReactNode,

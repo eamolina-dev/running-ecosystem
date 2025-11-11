@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useAuth } from "@/hooks/useAuth"
-import CreateEventForm from "../components/forms/CreateEventForm"
+import EventForm from "../components/forms/EventForm"
 import { fetchEventsByOrg } from "@/api/organization"
 // import { fetchEventsByOrg, deleteEvent } from "@/api/organization"
 import EventList from "@/components/EventList"

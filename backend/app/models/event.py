@@ -17,9 +17,10 @@ class Event(Base):
     banner_url = Column(String, nullable=True)
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
-    start_date = Column(Date, nullable=False)
+    start_date = Column(Date, nullable=True)
+    # start_date = Column(Date, nullable=False)
     end_date = Column(Date, nullable=True)
-    year = Column(Integer, nullable=False)
+    year = Column(Integer, nullable=True)
     status = Column(String, default="upcoming")  # upcoming, ongoing, finished
     created_at = Column(DateTime, default=datetime.utcnow)
 
