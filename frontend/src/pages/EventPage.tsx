@@ -39,7 +39,7 @@ export default function EventPage() {
   if (loading) return <p className="p-6">Cargando evento...</p>
   if (!event) return <p className="p-6">Evento no encontrado</p>
 
-  console.log(organization);
+  // console.log(organization);
 
   return (
     <div className="p-6 max-w-4xl mx-auto">

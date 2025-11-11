@@ -10,6 +10,9 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import EventsList from "../borrador/EventList"
 import EventDetail from "../borrador/EventDetail"
 import { PaymentSuccess, PaymentFailure, PaymentPending } from "@/pages/Payments"
+import Dashboard from "@/pages/Dashboard";
+import CreateEvent from "@/components/forms/CreateEventForm";
+import EditEventForm from "@/components/forms/EditEventForm";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +31,10 @@ export const router = createBrowserRouter([
       { path: "/payment/success", element: <PaymentSuccess /> },
       { path: "/payment/failure", element: <PaymentFailure /> },
       { path: "/payment/pending", element: <PaymentPending /> },
+      { path: "/dashboard", element: <Dashboard /> },
+      { path: "/events/create", element: <CreateEvent /> },
+      { path: "/events/:id/edit", element: <EditEventForm eventId={0} /> },
+
       
       // private
       {

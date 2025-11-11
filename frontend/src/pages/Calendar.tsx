@@ -4,6 +4,7 @@ import { fetchEvents } from "@/api/event"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import type { Event } from "@/types/types"
 import EventCard from "../components/EventCard"
+import EventList from "@/components/EventList"
 
 
 export default function Calendar() {
@@ -18,19 +19,11 @@ export default function Calendar() {
 
   return (
     <div className="max-w-3xl mx-auto mt-10 space-y-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Calendario de Eventos</h1>
-      {events.map((event) => (
-        <EventCard 
-          id={event.id} 
-          name={event.name} 
-          location={""} 
-          start_date={event.start_date} 
-          end_date={event.end_date} 
-          year={2020} 
-          status={"upcoming"}
-          // organization={null}
-        />
-      ))}
+      <EventList
+        events={events}
+        title="Calendario de Eventos"
+        onClickEvent={(id) => console.log("click en evento", id)}
+      />
     </div>
   )
 }
