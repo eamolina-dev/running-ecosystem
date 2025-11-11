@@ -3,7 +3,6 @@ from pydantic import BaseModel
 
 class OrganizationBase(BaseModel):
     name: str
-    user_id: Optional[int] = None 
     description: Optional[str] = None
     website: Optional[str] = None
     logo_url: Optional[str] = None

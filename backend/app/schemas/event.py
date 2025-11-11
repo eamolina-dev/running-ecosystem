@@ -3,16 +3,15 @@ from typing import Optional
 from pydantic import BaseModel
 
 class EventBase(BaseModel):
-    id: int
     name: str
     description: Optional[str] = None
     location: Optional[str] = None
     banner_url: Optional[str] = None
     latitude: Optional[float] = None
     longitude: Optional[float] = None
-    start_date: date
+    start_date: Optional[date] = None
     end_date: Optional[date] = None
-    year: int
+    year: Optional[int] = None
     status: Optional[str] = "upcoming"
 
 

@@ -3,13 +3,12 @@ from typing import Optional
 from pydantic import BaseModel
 
 class RaceBase(BaseModel):
-    id: int
     name: Optional[str] = None
     distance_km: float
     elevation_gain: Optional[float] = None
     terrain_type: Optional[str] = None
     price: Optional[float] = None
-    start_datetime: datetime
+    start_datetime: Optional[datetime] = None
     max_participants: Optional[int] = None
     registration_open: Optional[bool] = True
 
