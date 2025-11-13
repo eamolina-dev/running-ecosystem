@@ -1,0 +1,40 @@
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+from app.db.session import get_db
+from app.modules.organizations.organization_schema import OrganizationCreate, OrganizationUpdate, OrganizationRead
+from app.modules.events.event_schema import EventRead
+from app.modules.organizations import organization_service
+# from app.services.organization import get_events_by_org
+
+router = APIRouter(prefix="/organizations", tags=["Organizations"])
+
+
+@router.get("/", response_model=list[OrganizationRead])
+def get_all_orgs(db: Session = Depends(get_db)):
+    return organization_service.get_all(db)
+
+
+@router.get("/{org_id}", response_model=OrganizationRead)
+def get_org(org_id: int, db: Session = Depends(get_db)):
+    return organization_service.get_by_id(db, org_id)
+
+
+@router.post("/", response_model=OrganizationRead)
+def create_org(org_in: OrganizationCreate, db: Session = Depends(get_db)):
+    return organization_service.create(db, org_in)
+
+
+@router.put("/{org_id}", response_model=OrganizationRead)
+def update_org(org_id: int, org_in: OrganizationUpdate, db: Session = Depends(get_db)):
+    return organization_service.update(db, org_id, org_in)
+
+
+@router.delete("/{org_id}")
+def delete_org(org_id: int, db: Session = Depends(get_db)):
+    return organization_service.delete(db, org_id)
+
+# cross endpoints
+
+@router.get("/{org_id}/events", response_model=list[EventRead])
+def read_events_by_org(org_id: int, db: Session = Depends(get_db)):
+    return organization_service.get_events_by_org(db, org_id)

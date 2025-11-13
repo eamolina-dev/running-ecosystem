@@ -3,10 +3,10 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
-import app.models.user
-import app.models.runner
-import app.models.organization 
-import app.models.event
-import app.models.race
-import app.models.registration
-import app.models.result
+import app.modules.users.user_model
+import app.modules.runners.runner_schema
+import app.modules.organizations.organization_model 
+import app.modules.events.event_model
+import app.modules.races.race_model
+import app.modules.registrations.registration_model
+import app.modules.results.result_model
