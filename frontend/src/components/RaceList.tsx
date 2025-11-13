@@ -1,29 +1,24 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { fetchEventsByOrg } from "@/api/organization"
-import { useAuth } from "@/hooks/useAuth"
-import EventCard from "@/components/EventCard"
+import { useAuth } from "@/modules/auth/hooks/useAuth"
 import { Button } from "@/components/ui/button"
-import type { Event, Race } from "@/types/types"
-import EventItem from "./EventItem"
-import RaceItem from "./RaceItem"
+import type { Race } from "@/types/types"
+import RaceCard from "@/components/RaceCard"
+import { fetchRacesByEvent } from "@/api/event" // si ya tenés este endpoint
 
 interface RaceListProps {
-  races: Race[]
-  // onEdit?: (id: number) => void
-  // onDelete?: (id: number) => void
+  eventId?: number
 }
 
-
-const RaceList: React.FC<RaceListProps> = ({races}) => {
-  // const { user } = useAuth()
+const RaceList: React.FC<RaceListProps> = ({ eventId }) => {
+  const { user } = useAuth()
   const navigate = useNavigate()
-  // const [races, setRaces] = useState<Event[]>([])
+  const [races, setRaces] = useState<Race[]>([])
 
-  // useEffect(() => {
-  //   if (!eventId) return
-  //   fetchEventsByOrg(eventId.organization_id).then(setRaces).catch(console.error)
-  // }, [eventId])
+  useEffect(() => {
+    if (!eventId) return
+    fetchRacesByEvent(eventId).then(setRaces).catch(console.error)
+  }, [eventId])
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -32,7 +27,7 @@ const RaceList: React.FC<RaceListProps> = ({races}) => {
         <Button
           onClick={() =>
             navigate("/races/create", {
-              // state: { eventId: eventId },
+              state: { eventId },
             })
           }
         >
@@ -44,23 +39,18 @@ const RaceList: React.FC<RaceListProps> = ({races}) => {
         <p className="text-gray-500 text-center">No hay carreras creadas.</p>
       ) : (
         <div className="space-y-4">
-          {races.map((r) => (
-            <RaceItem 
-              race={r}
-              onEdit={() => navigate(`/races/${r.id}/edit`)}
-              onDelete={() => console.log("CARRERA BORRADA!!!")}
+          {races.map((race) => (
+            <RaceCard
+              key={race.id}
+              id={race.id}
+              name={race.name}
+              distance_km={race.distance_km}
+              terrain_type={race.terrain_type}
+              elevation_gain={race.elevation_gain}
+              price={race.price}
+              start_datetime={race.start_datetime}
+              max_participants={race.max_participants}
             />
-            // <EventCard
-            //   key={ev.id}
-            //   id={ev.id}
-            //   name={ev.name}
-            //   location={ev.location}
-            //   start_date={ev.start_date}
-            //   end_date={ev.end_date}
-            //   year={ev.year}
-            //   status={ev.status as any}
-            //   onClick={() => navigate(`/events/${ev.id}`)}
-            // />
           ))}
         </div>
       )}

@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/form"
 
 import { createEvent, updateEvent, fetchEventById } from "@/api/event"
-import { useAuth } from "@/hooks/useAuth"
+import { useAuth } from "@/modules/auth/hooks/useAuth"
 
 interface EventFormProps {
   eventId?: number // si está presente, es edición
@@ -212,6 +212,14 @@ export default function EventForm({ onSuccess }: { onSuccess?: () => void }) {
 
         <Button type="submit" className="w-full">
           {eventId ? "Guardar cambios" : "Crear evento"}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full"
+          onClick={() => navigate(-1)}
+        >
+          Cancelar
         </Button>
       </form>
     </Form>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useAuth } from "@/hooks/useAuth"
+import { useAuth } from "@/modules/auth/hooks/useAuth"
 import EventForm from "../components/forms/EventForm"
 import { fetchEventsByOrg } from "@/api/organization"
 // import { fetchEventsByOrg, deleteEvent } from "@/api/organization"

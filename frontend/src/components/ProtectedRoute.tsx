@@ -1,6 +1,6 @@
 import React, { type JSX } from "react"
 import { Navigate } from "react-router-dom"
-import { useAuth } from "../hooks/useAuth"
+import { useAuth } from "../modules/auth/hooks/useAuth"
 
 const ProtectedRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
   const { user } = useAuth()

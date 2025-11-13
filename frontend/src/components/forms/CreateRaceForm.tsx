@@ -11,7 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { createRace, updateRace } from "@/api/race"
-import { useAuth } from "@/hooks/useAuth"
+import { useAuth } from "@/modules/auth/hooks/useAuth"
 
 const raceSchema = z.object({
   name: z.string().min(2, "El nombre es obligatorio"),

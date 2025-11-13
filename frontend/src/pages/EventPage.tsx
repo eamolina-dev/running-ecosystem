@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { fetchEventById, fetchOrgByEvent, fetchRacesByEvent } from "@/api/event"
 import { createRace } from "@/api/race" // 🔹 Nuevo: endpoint para crear carrera
 import type { Event, Race, Organization } from "@/types/types"
-import { useAuth } from "@/hooks/useAuth"
+import { useAuth } from "@/modules/auth/hooks/useAuth"
 import RaceCard from "@/components/RaceCard"
 import { Button } from "@/components/ui/button"
 import {
@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
+import RaceList from "@/components/RaceList"
 
 export default function EventPage() {
   const { id } = useParams<{ id: string }>()
@@ -158,9 +159,12 @@ export default function EventPage() {
         <p className="text-gray-500">No hay carreras asociadas.</p>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
-          {races.map((race) => (
+          {/* {races.map((race) => (
             <RaceCard key={race.id} {...race} />
-          ))}
+          ))} */}
+          <RaceList 
+            eventId={event?.id}
+          />
         </div>
       )}
     </div>
